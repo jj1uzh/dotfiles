@@ -1,0 +1,41 @@
+modmap:
+  - name: CapsToCtrl
+    application:
+      not: [firefox,Slack]
+    remap:
+      CapsLock: Ctrl_L
+
+virtual_modifiers:
+  - CapsLock
+
+keymap:
+  - name: Emacs
+    application:
+      only: [firefox,Slack]
+    remap:
+      # Cursor
+      CapsLock-b: { with_mark: left }
+      CapsLock-f: { with_mark: right }
+      CapsLock-p: { with_mark: up }
+      CapsLock-n: { with_mark: down }
+      # Beginning/End of line
+      CapsLock-a: { with_mark: home }
+      CapsLock-e: { with_mark: end }
+      # Newline
+      CapsLock-m: enter
+      CapsLock-o: [enter, left]
+      # Delete
+      CapsLock-d: [delete, { set_mark: false }]
+      CapsLock-h: [backspace, { set_mark: false }]
+      CapsLock-w: [C-x, { set_mark: false }]
+      M-w: [C-c, { set_mark: false }]
+      CapsLock-y: [C-v, { set_mark: false }]
+      # Kill line
+      CapsLock-k: [Shift-end, C-x, { set_mark: false }]
+      # Undo
+      CapsLock-slash: [C-z, { set_mark: false }]
+      # Mark
+      CapsLock-space: { set_mark: true }
+      # SKK
+      CapsLock-j: C-j
+      CapsLock-g: C-g
