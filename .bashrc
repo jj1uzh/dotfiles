@@ -4,6 +4,7 @@ alias ls='ls --color=auto'
 alias ll='ls -alFh'
 alias rm='rm -i'
 alias emacs='emacs -nw'
+alias diff='diff --color'
 
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="$PATH:$HOME/.local/share/coursier/bin"
@@ -12,12 +13,12 @@ PATH="$PATH:$GEM_HOME/bin"
 export PATH
 
 PS1='\[\e[1m\]\n$? [\u@\h \w]\[\e[0m\]\n\$> '
+bash_preexec_path="/usr/share/bash-preexec/bash-preexec.sh"
 case "$TERM" in
     dumb)
         PS1='\$ '
         ;;
     xterm*)
-        test -f ~/bash-preexec.sh && source ~/bash-preexec.sh || echo '! No ~/bash-preexec.sh'
         vterm_title_preexec() {
             printf "\033]0;$(dirs +0):${1%% *}\007"
         }
@@ -36,6 +37,7 @@ case "$TERM" in
         prompt_end(){
             vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
         }
+        test -f "$bash_preexec_path" && source "$bash_preexec_path" || echo '! bash-preexec is not installed'
         precmd_functions+=(vterm_title_precmd)
         preexec_functions+=(vterm_title_preexec)
         PS1="$PS1"'\[$(prompt_end)\]'
@@ -51,12 +53,8 @@ case "$TERM" in
         function set_screen_title_cmd() {
             set_screen_title "$(basename "$(pwd | sed -e "s_^${HOME}_\~_")"):${1/ */}"
         }
-        if test -f ~/bash-preexec.sh; then
-            source ~/bash-preexec.sh
-            preexec_functions+=(set_screen_title_cmd)
-            precmd_functions+=(set_screen_title_pwd)
-        else
-            echo '! No ~/bash-preexec.sh'
-        fi
+        test -f "$bash_preexec_path" && source "$bash_preexec_path" || echo '! bash-preexec is not installed'
+	preexec_functions+=(set_screen_title_cmd)
+	precmd_functions+=(set_screen_title_pwd)
 esac
 export PS1
