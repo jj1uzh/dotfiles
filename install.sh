@@ -18,7 +18,7 @@ install_link() {
     fi
     mkdir -p "$target_dir"
     ln -s "$src_abs" "$target"
-    echo '$src_rel: Installed'
+    echo "$src_rel: Installed"
 }
 
 install_link ".bashrc"
@@ -31,5 +31,5 @@ done
 
 
 if [ -n "$skipped" ]; then
-    echo "\nSkipped: $skipped"
+    echo -e "\nSkipped:$skipped"
 fi
