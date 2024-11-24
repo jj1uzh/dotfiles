@@ -6,20 +6,19 @@ install_link() {
     local src_abs=`realpath "$src_rel"`
     local target="$HOME/$src_rel"
     local target_dir=`dirname "$target"`
-    echo -n "$src_rel: "
     existing_link_target=`readlink -n "$target"`
     if [ "$existing_link_target" = "$src_abs" ]; then
 #        echo "Already installed"
 	    return
     fi
     if [ -f "$target" ]; then
-        echo "Exists"
+        echo "$src_rel: Exists"
         skipped="$skipped $src_rel"
         return
     fi
     mkdir -p "$target_dir"
     ln -s "$src_abs" "$target"
-    echo 'Installed'
+    echo '$src_rel: Installed'
 }
 
 install_link ".bashrc"
