@@ -148,7 +148,7 @@
  '(global-tab-line-mode nil)
  '(magit-log-margin '(t "%Y-%m-%d %H:%M:%S" magit-log-margin-width t 18))
  '(package-selected-packages
-   '(xclip company-reftex rainbow-mode request evil htmlize eglot php-mode json-mode go-mode pdf-tools slime-company slime web-mode auctex company flycheck strace-mode csv-mode dashboard treemacs-magit vterm magit docker-compose-mode nginx-mode eldoc treemacs company-math cmake-mode diff-hl systemd ido-vertical-mode ido-mode rust-mode yaml-mode wc-mode markdown-mode log4j-mode dockerfile-mode docker ddskk))
+   '(typescript-mode prisma-ts-mode scala-mode xclip company-reftex rainbow-mode request evil htmlize eglot php-mode json-mode go-mode pdf-tools slime-company slime web-mode auctex company flycheck strace-mode csv-mode dashboard treemacs-magit vterm magit docker-compose-mode nginx-mode eldoc treemacs company-math cmake-mode diff-hl systemd ido-vertical-mode ido-mode rust-mode yaml-mode wc-mode markdown-mode log4j-mode dockerfile-mode docker ddskk))
  '(safe-local-variable-values '((whitespace-line-column . 80)))
  '(tab-line-exclude-modes '(completion-list-mode compilation-mode))
  '(warning-suppress-types '((server))))

@@ -7,7 +7,7 @@
                          ("fm-mbp" "-9")
                          ("lab-mbp-miyachi.local" "-12")
                          ("fm-pc" "-9")
-                         (_ "9"))))
+                         (_ "-9"))))
 (push `(font . ,my--font) default-frame-alist)
 ;(setq-default line-spacing 0.1)
 (when (eq system-type 'darwin)

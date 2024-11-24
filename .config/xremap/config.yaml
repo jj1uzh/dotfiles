@@ -1,7 +1,7 @@
 modmap:
   - name: CapsToCtrl
     application:
-      not: [firefox,Slack]
+      not: [firefox,Slack,Chromium]
     remap:
       CapsLock: Ctrl_L
 
@@ -11,7 +11,7 @@ virtual_modifiers:
 keymap:
   - name: Emacs
     application:
-      only: [firefox,Slack]
+      only: [firefox,Slack,Chromium]
     remap:
       # Cursor
       CapsLock-b: { with_mark: left }

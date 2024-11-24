@@ -58,3 +58,5 @@ case "$TERM" in
 	precmd_functions+=(set_screen_title_pwd)
 esac
 export PS1
+
+. /opt/asdf-vm/asdf.sh
