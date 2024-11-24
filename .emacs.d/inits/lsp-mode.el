@@ -1,0 +1,6 @@
+(setq gc-cons-threshold (* 1024 1024))
+(setq read-process-output-max (* 1024 1024))
+(setq lsp-idle-delay 0.100)
+(when-let ((root (lsp-workspace-root)))
+  (set (make-local-variable 'compile-command)
+       (concat "make -C " root)))

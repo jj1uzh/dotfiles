@@ -1,0 +1,31 @@
+(setq-default skk-kutouten-type 'en)
+(setq skk-large-jisyo
+      (if (eq system-type 'darwin)
+          "/Users/futa/Library/Application Support/AquaSKK/SKK-JISYO.L"
+        "/usr/share/skk/SKK-JISYO.L"))
+(setq skk-dcomp-activate t)
+(setq skk-dcomp-multiple-activate t)
+
+(setq skk-user-directory (locate-user-emacs-file "ddskk"))
+(defmacro ddskkdir (filename)
+  (let ((dir (locate-user-emacs-file "ddskk")))
+    `(concat ,dir "/" ,filename)))
+(setq skk-jisyo (ddskkdir "skk-jisyo"))
+(setq skk-backup-jisyo (ddskkdir "skk-jisyo.BAK"))
+(setq skk-record-file (ddskkdir "skk-record"))
+(define-key minibuffer-local-map (kbd "C-j") 'skk-kakutei)
+(defun skk-isearch-setup-maybe ()
+  (require 'skk-vars)
+  (when (or (eq skk-isearch-mode-enable 'always)
+            (and (boundp 'skk-mode)
+                 skk-mode
+                 skk-isearch-mode-enable))
+    (skk-isearch-mode-setup)))
+
+(defun skk-isearch-cleanup-maybe ()
+  (require 'skk-vars)
+  (when (and (featurep 'skk-isearch)
+             skk-isearch-mode-enable)
+    (skk-isearch-mode-cleanup)))
+(add-hook 'isearch-mode-hook #'skk-isearch-setup-maybe)
+(add-hook 'isearch-mode-end-hook #'skk-isearch-cleanup-maybe)

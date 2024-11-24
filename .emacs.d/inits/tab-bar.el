@@ -1,0 +1,11 @@
+(define-key global-map (kbd "C-x t O") #'tab-bar-switch-to-prev-tab)
+(define-key global-map (kbd "C-x t t") #'tab-bar-switch-to-recent-tab)
+(define-key global-map (kbd "s-}") #'tab-bar-switch-to-next-tab)
+(define-key global-map (kbd "s-{") #'tab-bar-switch-to-prev-tab)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-mode nil)
+(setq tab-bar-show 1)
+(custom-set-faces
+ '(tab-bar ((t (:inherit nil))))
+ '(tab-bar-tab ((t (:inherit mode-line :box (:line-width (1 . 1) :style released-button)))))
+ '(tab-bar-tab-inactive ((t (:inherit (mode-line-inactive tab-bar-mode))))))
